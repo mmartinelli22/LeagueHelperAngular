@@ -5,6 +5,7 @@ import { routes } from './app.routes';
 import { provideClientHydration, withEventReplay } from '@angular/platform-browser';
 import { provideStore } from '@ngrx/store';
 import { provideEffects } from '@ngrx/effects';
+ import { provideHttpClient } from '@angular/common/http'
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -12,6 +13,7 @@ export const appConfig: ApplicationConfig = {
     provideZonelessChangeDetection(),
     provideRouter(routes), provideClientHydration(withEventReplay()),
     provideStore(),
-    provideEffects()
+    provideEffects(),
+     provideHttpClient()
 ]
 };
