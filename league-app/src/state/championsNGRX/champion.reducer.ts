@@ -4,7 +4,7 @@ import { on } from "@ngrx/store";
 
 export interface ChampionState {
 
-    champions: any[]; // Replace 'any' with your Champion model if available
+    champions: any[];
     error: string;
     status: 'pending' | 'loading' | 'error' | 'success';
 }

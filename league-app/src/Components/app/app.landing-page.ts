@@ -11,16 +11,14 @@ import { loadChampions } from '../../state/championsNGRX/champion.actions';
 // '/lol/platform/v3/champion-rotations'
 @Component({
     selector: 'app-root',
-    imports: [ CommonModule],
-    templateUrl:'./app.landingPage.html',
-    // styleUrls: ['./app.landingPage.css'],
+    imports: [ CommonModule,],
+    templateUrl:'./app.landing-page.html',
+    // styleUrls: ['./app.landing-page.css'],
     standalone: true,
 })
 export class LandingComponent {
-    //ACTIONS FOR NGRX
-    //LOAD ALL CHAMPIONS
-    //CLICK ON CHAMPION TO GET MORE INFO
-    constructor(){}
+    constructor(private router: Router, private store: Store<{ champions: ChampionState }>) {}
+    
     champions: any = null;
     landingComponent: string = '';
     imgPrefix = 'http://ddragon.leagueoflegends.com/cdn/12.18.1/img/champion/';
@@ -28,22 +26,14 @@ export class LandingComponent {
     http = inject(HttpClient);
 
     ngOnInit(): void {
-        // this.store.select('champions').subscribe((data) => {
-        //     console.log('from store', data);
-        //     this.champions = data;
-        // });
-
         const url = 'https://ddragon.leagueoflegends.com/cdn/12.18.1/data/en_US/champion.json';
         this.http.get<any>(url).subscribe((apiData) => {
-            this.champions = apiData.data;
-            console.log('champions', this.champions);
-            this.champions = Object.keys(this.champions).map((x) => this.champions[x].title);
-            this.landingComponent = `${this.champions}`;
-            console.log('from api', apiData.data);
+        const championData = apiData.data;
+        const championIds = Object.keys(championData).map((key) => championData[key].id);
+        this.champions = championIds;
+        this.store.dispatch(loadChampions({ champions: this.champions }));
         });
-        loadChampions({ champions: this.champions });
     }
 }
-   
 
 export default {LandingComponent}
