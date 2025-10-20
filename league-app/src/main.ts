@@ -1,6 +1,17 @@
+import 'zone.js';
 import { bootstrapApplication } from '@angular/platform-browser';
-import { appConfig } from './Components/app/app.config';
-import { LandingComponent } from './Components/app/app.landing-page';
+import { AppComponent } from './Components/app/app.component'
+import { provideRouter } from '@angular/router';
+import { routes } from './Components/app/app.routes';
+import { provideHttpClient } from '@angular/common/http';
+import { importProvidersFrom } from '@angular/core';
+import { StoreModule } from '@ngrx/store';
+import { championReducer } from './state/championsNGRX/champion.reducer';
 
-bootstrapApplication(LandingComponent, appConfig)
-  .catch((err) => console.error(err));
+bootstrapApplication(AppComponent, {
+  providers: [
+    provideRouter(routes),
+    provideHttpClient(),
+    importProvidersFrom(StoreModule.forRoot({ champions: championReducer }))
+  ],
+}).catch(err => console.error(err));

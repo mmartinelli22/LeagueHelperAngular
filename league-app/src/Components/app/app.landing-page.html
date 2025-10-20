@@ -1,8 +1,12 @@
-<h1>
-League Helper App!
-</h1>
+<h1>Welcome to league helper!</h1>
 <div *ngIf="champions">
   <div *ngFor="let champ of champions">
-    <img [src]="imgPrefix + champ + '.png'" [alt]="champ" />
+    <img
+      [src]="imgPrefix + champ + '.png'"
+      [alt]="champ"
+      (click)="onChampionClick(champ)"
+      style="cursor:pointer; width:100px;"
+    />
     <p>{{ champ }}</p>
   </div>
+</div>
