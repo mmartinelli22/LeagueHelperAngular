@@ -1,4 +1,4 @@
-<div *ngIf="champName; else loading">
+<div className="champion-card"*ngIf="champName; else loading">
   <h1>{{ champName }}</h1>
   <h3>{{ champTitle }}</h3>
   <img [src]="imgPrefix + champName + '.png'" [alt]="champName" />
@@ -7,4 +7,4 @@
 
 <ng-template #loading>
   <p>Loading champion details...</p>
-</ng-template>
+</ng-template> 

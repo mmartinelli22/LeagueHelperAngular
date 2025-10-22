@@ -10,7 +10,7 @@ import { loadChampions, findChampion } from '../../state/championsNGRX/champion.
    selector: 'app-root',
     imports: [ CommonModule,],
     templateUrl:'./app.landing-page.html',
-    // styleUrls: ['./app.landing-page.css'],
+    styleUrls: ['./app.landing-page.css'],
     standalone: true,
 })
 export class LandingComponent {

@@ -1,12 +1,13 @@
 <h1>Welcome to league helper!</h1>
-<div *ngIf="champions">
-  <div *ngFor="let champ of champions">
+<div class="champion-grid" *ngIf="champions">
+  <div class="champion-card" *ngFor="let champ of champions">
     <img
       [src]="imgPrefix + champ + '.png'"
       [alt]="champ"
       (click)="onChampionClick(champ)"
       style="cursor:pointer; width:100px;"
+      class="champion-image"
     />
-    <p>{{ champ }}</p>
+    <p class="champion-name">{{ champ }}</p>
   </div>
 </div>
