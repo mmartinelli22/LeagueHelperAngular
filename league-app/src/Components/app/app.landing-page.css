@@ -35,3 +35,30 @@
   border-radius: 10px;
   display: block;
 }
+.lol-button {
+  font-family: 'Cinzel Decorative', serif; /* LoL-style font */
+  font-size: 1rem;
+  color: #FFD700;                     /* gold text */
+  background: #4a4af2;                /* dark background */
+  border: 2px solid #FFD700;          /* gold border */
+  border-radius: 6px;
+  padding: 0.4rem 1rem;
+  cursor: pointer;
+  margin: 0 0.25rem 0.25rem 0;
+  transition: all 0.2s ease-in-out;
+  text-shadow: 1px 1px 3px #000;
+}
+
+.lol-button:hover {
+  color: #fff;
+  background: #FFD700;
+  border-color: #fff;
+  text-shadow: 2px 2px 6px #000;
+  transform: scale(1.05);
+}
+
+.filter-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 1rem;
+}

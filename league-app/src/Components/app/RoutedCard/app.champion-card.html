@@ -1,4 +1,5 @@
 <div className="champion-card"*ngIf="champName; else loading">
+   <button class="lol-button" (click)="goHome()">Return to Home</button>
   <h1>{{ champName }}</h1>
   <h3>{{ champTitle }}</h3>
   <img [src]="imgPrefix + champName + '.png'" [alt]="champName" />

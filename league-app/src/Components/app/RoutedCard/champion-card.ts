@@ -1,9 +1,9 @@
 import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { Store } from '@ngrx/store';
-import { ChampionState } from '../../../state/championsNGRX/champion.reducer'
+import { ChampionState } from '../../../state/championsNGRX/champion.reducer';
 import { findChampion } from '../../../state/championsNGRX/champion.actions';
 
 @Component({
@@ -11,6 +11,7 @@ import { findChampion } from '../../../state/championsNGRX/champion.actions';
   standalone: true,
   imports: [CommonModule],
   templateUrl: './app.champion-card.html',
+  styleUrls: ['./app.champion-card.css'] // <-- add this
 })
 export class ChampionCardComponent {
   champName = '';
@@ -19,7 +20,11 @@ export class ChampionCardComponent {
   imgPrefix = 'http://ddragon.leagueoflegends.com/cdn/12.18.1/img/champion/';
   http = inject(HttpClient);
 
-  constructor(private route: ActivatedRoute, private store: Store<{ champions: ChampionState }>) {}
+  constructor(
+    private route: ActivatedRoute,
+    private store: Store<{ champions: ChampionState }>,
+    private router: Router // <-- inject Router
+  ) {}
 
   ngOnInit(): void {
     const championId = this.route.snapshot.paramMap.get('id');
@@ -34,5 +39,9 @@ export class ChampionCardComponent {
       this.champTitle = championData.title;
       this.champText = championData.blurb;
     });
+  }
+
+  goHome() {
+    this.router.navigate(['/']); // navigate back to home
   }
 }

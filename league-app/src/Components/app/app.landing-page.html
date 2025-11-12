@@ -1,13 +1,21 @@
 <h1>Welcome to league helper!</h1>
-<div class="champion-grid" *ngIf="champions">
-  <div class="champion-card" *ngFor="let champ of champions">
-    <img
-      [src]="imgPrefix + champ + '.png'"
-      [alt]="champ"
-      (click)="onChampionClick(champ)"
-      style="cursor:pointer; width:100px;"
-      class="champion-image"
-    />
-    <p class="champion-name">{{ champ }}</p>
+<div class="filter-buttons">
+  <button class="lol-button" *ngFor="let role of roles" (click)="toggleRole(role)">
+    {{ role }}
+  </button>
+  <button class="lol-button" (click)="resetFilter()">Reset Filter</button>
+</div>
+<div class="champion-grid">
+  <div 
+    *ngFor="let champ of (filteredChampions$ | async)"
+    class="champion-card"
+    (click)="onChampionClick(champ.id)">
+    
+    <img [src]="imgPrefix + champ.image.full" [alt]="champ.name" />
+    <div class="champion-name">{{ champ.name }}</div>
+    <div class="champion-tags">{{ champ.tags.join(', ') }}</div>
   </div>
 </div>
+
+
+

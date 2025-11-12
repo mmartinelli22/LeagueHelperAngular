@@ -1,0 +1,21 @@
+.lol-button {
+  font-family: 'Cinzel Decorative', serif; /* LoL-style font */
+  font-size: 1.2rem;
+  color: #FFD700;           /* Gold color */
+  text-shadow: 2px 2px 4px #000; /* Shadow for depth */
+  background: #1a1a1a;      /* Dark background */
+  border: 2px solid #FFD700;
+  border-radius: 6px;
+  padding: 0.4rem 1.2rem;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  margin-bottom: 1rem;
+}
+
+.lol-button:hover {
+  color: #fff;
+  background: #FFD700;
+  border-color: #fff;
+  text-shadow: 2px 2px 6px #000;
+  transform: scale(1.05);
+}
